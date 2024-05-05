@@ -24,10 +24,6 @@ public abstract class Employee implements Employable {
     public double getSalary() {
         return salary;
     }
-//Nie było tego w instrukcji ale zakładam że należy tą metodę dodać aby móc korzystać z ID w Main:)
-    public int getId() {
-        return id;
-    }
 
     public String getHireDate() {
         return hireDate;
@@ -36,4 +32,19 @@ public abstract class Employee implements Employable {
     public String getPosition() {
         return position;
     }
+
+     @Override
+     public int hashCode() {
+         return id;
+     }
+ 
+     @Override
+     public boolean equals(Object obj) {
+         if (obj == null || !(obj instanceof Employee)) {
+             return false;
+         }
+         
+         Employee other = (Employee) obj;
+         return this == other || (this.id == other.id);
+     }
 }
